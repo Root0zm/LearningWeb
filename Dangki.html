@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phiếu đăng ký</title>
+</head>
+<body>
+
+    <table border="1" cellpadding="10" cellspacing="0" style="width: 500px; margin: auto;">
+        <thead>
+            <tr style="background-color: #ffffff;">
+                <th colspan="2">
+                    <h2 >Phiếu đăng ký tham gia chương trình khuyến mãi</h2>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="width: 30%;">Họ và tên</td>
+                <td><input type="text" name="hoTen" style="width: 95%;"></td>
+            </tr>
+            <tr>
+                <td>Địa chỉ</td>
+                <td><input type="text" name="diaChi" style="width: 95%;"></td>
+            </tr>
+            <tr>
+                <td>Điện thoại</td>
+                <td><input type="tel" name="dienThoai" style="width: 95%;"></td>
+            </tr>
+            <tr>
+                <td>Phái</td>
+                <td>
+                    <input type="radio" name="phai" value="Nam"> Nam
+                    <input type="radio" name="phai" value="Nữ"> Nữ
+                </td>
+            </tr>
+            <tr>
+                <td>Nghề nghiệp</td>
+                <td>
+                    <select name="ngheNghiep" style="width: 98%;">
+                        <option value="">-- Chọn nghề nghiệp --</option>
+                        <option value="Giáo viên">Giáo viên</option>
+                        <option value="Sinh viên">Sinh viên</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Chọn sản phẩm tham gia</td>
+                <td>
+                    <select name="sanPham" size="4" style="width: 98%;">
+                        <option value="Kem đánh răng">Kem đánh răng</option>
+                        <option value="Bột giặt">Bột giặt</option>
+                        <option value="Dầu gội đầu">Dầu gội đầu</option>
+                        <option value="Sữa tắm">Sữa tắm</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Số người dự đoán tham gia</td>
+                <td><input type="text" name="soNguoiDuDoan" style="width: 95%;"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Đồng ý">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
