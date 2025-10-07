@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính cộng 2 số</title>
+    <style>
+        .calculator {
+            width: 300px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px #aaa;
+        }
+        #display {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 24px;
+            text-align: right;
+            border: 1px solid #000;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 5px;
+        }
+        .btn {
+            padding: 15px;
+            font-size: 18px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            text-align: center;
+            background-color: #f0f0f0;
+            user-select: none; 
+        }
+        .btn:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled value="0">
+        <div class="buttons">
+            <button class="btn num-btn" data-value="1">1</button>
+            <button class="btn num-btn" data-value="2">2</button>
+            <button class="btn num-btn" data-value="3">3</button>
+            <button class="btn op-btn" data-value="+">+</button>
+
+            <button class="btn num-btn" data-value="4">4</button>
+            <button class="btn num-btn" data-value="5">5</button>
+            <button class="btn num-btn" data-value="6">6</button>
+            <button class="btn equal-btn" data-value="=">=</button>
+            
+            <button class="btn num-btn" data-value="7">7</button>
+            <button class="btn num-btn" data-value="8">8</button>
+            <button class="btn num-btn" data-value="9">9</button>
+            <button class="btn num-btn" data-value="0">0</button>
+            
+            <button class="btn op-btn" data-value="C" style="grid-column: span 1; background-color: #ffcccc;">C</button>
+            <button class="btn equal-btn" data-value="=" style="grid-column: span 2; background-color: #ccffcc;">=</button>
+        </div>
+    </div>
+
+    <script>
+       
+        var display = document.getElementById('display');
+        var currentInput = '';
+        var firstOperand = null; 
+        var operator = null; 
+        var waitingForSecondOperand = false;
+
+        function updateDisplay(value) {
+            display.value = value;
+        }
+
+        function handleNumber(number) {
+            if (waitingForSecondOperand === true) {
+                currentInput = number;
+                waitingForSecondOperand = false;
+            } else {
+          
+                currentInput = currentInput === '0' ? number : currentInput + number;
+            }
+            updateDisplay(currentInput);
+        }
+
+        function handleOperator(nextOperator) {
+            var inputValue = parseFloat(currentInput);
+
+            if (operator && waitingForSecondOperand) {
+               
+                operator = nextOperator;
+                return;
+            }
+
+            if (firstOperand === null) {
+               
+                firstOperand = inputValue;
+            } else if (operator) {
+                
+                var result = calculate(firstOperand, inputValue, operator);
+                firstOperand = result;
+                updateDisplay(result);
+            }
+
+            waitingForSecondOperand = true;
+            operator = nextOperator;
+        }
+
+        function calculate(num1, num2, op) {
+            if (op === '+') return num1 + num2;
+            
+            return num2; 
+
+        function resetCalculator() {
+            currentInput = '0';
+            firstOperand = null;
+            operator = null;
+            waitingForSecondOperand = false;
+            updateDisplay(currentInput);
+        }
+
+       
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+                var value = event.target.dataset.value;
+
+                if (value === 'C') {
+                    resetCalculator();
+                    return;
+                }
+
+                if (['+', '=', 'C'].includes(value)) {
+                   
+                    if (value === '=') {
+                        handleOperator(operator); 
+                        operator = null; 
+                    } else if (value === '+') {
+                        handleOperator(value);
+                    }
+                } else {
+                  
+                    handleNumber(value);
+                }
+            });
+        });
+
+        
+        resetCalculator();
+    </script>
+</body>
+</html>

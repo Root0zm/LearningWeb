@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>bai5</title>
+</head>
+<body>
+    <h1>Chọn Ngày Tháng Năm Sinh</h1>
+    <label for="date-of-birth">Ngày tháng năm sinh:</label>
+    
+    <select id="dob-day">
+        <option value="">Ngày</option>
+    </select>
+    
+    <select id="dob-month">
+        <option value="">tháng</option>
+    </select>
+    
+    <select id="dob-year">
+        <option value="">năm</option>
+    </select>
+
+    <script>
+      
+        function populateSelect(selectId, start, end, reverse = false) {
+            const selectElement = document.getElementById(selectId);
+            
+        
+            while (selectElement.children.length > 1) {
+                selectElement.removeChild(selectElement.lastChild);
+            }
+
+            let values = [];
+            if (reverse) {
+             
+                for (let i = end; i >= start; i--) {
+                    values.push(i);
+                }
+            } else {
+  
+                for (let i = start; i <= end; i++) {
+                    values.push(i);
+                }
+            }
+
+
+            values.forEach(value => {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = value;
+                selectElement.appendChild(option);
+            });
+        }
+    
+        populateSelect('dob-day', 1, 31);  
+        populateSelect('dob-month', 1, 12); 
+        const currentYear = new Date().getFullYear();
+        populateSelect('dob-year', 1900, currentYear, true); 
+    </script>
+</body>
+</html>

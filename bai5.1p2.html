@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giải phương trình bậc 2</title>
+</head>
+<body>
+    <h1>Giải phương trình bậc 2: ax² + bx + c = 0</h1>
+    <p>Với các hệ số: a = 4, b = 6, c = 2</p>
+    <div id="result"></div>
+
+    <script>
+  
+        var a = 4;
+        var b = 6;
+        var c = 2;
+        var resultDiv = document.getElementById('result');
+
+     
+        var delta = b * b - 4 * a * c;
+
+      
+        if (a === 0) {
+         
+            if (b === 0) {
+                if (c === 0) {
+                    resultDiv.innerHTML = "Phương trình vô số nghiệm (0 = 0)";
+                } else {
+                    resultDiv.innerHTML = "Phương trình vô nghiệm (c ≠ 0)";
+                }
+            } else {
+                var x = -c / b;
+                resultDiv.innerHTML = "Vì a = 0 nên đây là phương trình bậc nhất. Nghiệm x = " + x;
+            }
+        } else if (delta < 0) {
+
+            resultDiv.innerHTML = "Δ = " + delta + ". Phương trình vô nghiệm vì Δ < 0.";
+        } else if (delta === 0) {
+     
+            var x = -b / (2 * a);
+            resultDiv.innerHTML = "Δ = 0. Phương trình có nghiệm kép x₁ = x₂ = " + x.toFixed(2);
+        } else {
+           
+            var x1 = (-b + Math.sqrt(delta)) / (2 * a);
+            var x2 = (-b - Math.sqrt(delta)) / (2 * a);
+            resultDiv.innerHTML = "Δ = " + delta + ". Phương trình có 2 nghiệm phân biệt:<br>" +
+                                  "x₁ = " + x1.toFixed(2) + "<br>" +
+                                  "x₂ = " + x2.toFixed(2);
+        }
+    </script>
+</body>
+</html>
