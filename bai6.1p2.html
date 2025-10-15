@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giải phương trình bậc 2</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        h2 { text-align: center; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: inline-block; width: 20px; }
+        .input-group input { width: 100px; padding: 5px; }
+        button { padding: 10px 20px; cursor: pointer; display: block; margin: 20px auto 0; }
+        #ketqua { margin-top: 20px; font-weight: bold; color: blue; }
+    </style>
+</head>
+<body>
+
+    <h2>Giải phương trình bậc 2: ax² + bx + c = 0</h2>
+
+    <div class="input-group">
+        <label for="heso_a">a =</label>
+        <input type="text" id="heso_a" placeholder="Nhập a">
+    </div>
+    <div class="input-group">
+        <label for="heso_b">b =</label>
+        <input type="text" id="heso_b" placeholder="Nhập b">
+    </div>
+    <div class="input-group">
+        <label for="heso_c">c =</label>
+        <input type="text" id="heso_c" placeholder="Nhập c">
+    </div>
+
+    <button onclick="giaiPhuongTrinh()">Giải phương trình</button>
+
+    <div id="ketqua"></div>
+
+    <script>
+        function giaiPhuongTrinh() {
+            const a = parseFloat(document.getElementById('heso_a').value);
+            const b = parseFloat(document.getElementById('heso_b').value);
+            const c = parseFloat(document.getElementById('heso_c').value);
+            const ketquaDiv = document.getElementById('ketqua');
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                ketquaDiv.innerHTML = "Vui lòng nhập đủ các hệ số a, b, c là số.";
+                return;
+            }
+
+ 
+            if (a === 0) {
+                if (b === 0) {
+                    if (c === 0) {
+                        ketquaDiv.innerHTML = "Phương trình có vô số nghiệm.";
+                    } else {
+                        ketquaDiv.innerHTML = "Phương trình vô nghiệm.";
+                    }
+                } else {
+                    let x = -c / b;
+                    ketquaDiv.innerHTML = `Phương trình có một nghiệm: x = ${x}`;
+                }
+                return;
+            }
+
+
+            let delta = b*b - 4*a*c;
+
+            if (delta < 0) {
+                ketquaDiv.innerHTML = "Phương trình vô nghiệm.";
+            } else if (delta === 0) {
+                let x = -b / (2 * a);
+                ketquaDiv.innerHTML = `Phương trình có nghiệm kép: x₁ = x₂ = ${x}`;
+            } else {
+                let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                ketquaDiv.innerHTML = `Phương trình có hai nghiệm phân biệt:<br>x₁ = ${x1}<br>x₂ = ${x2}`;
+            }
+        }
+    </script>
+</body>
+</html>

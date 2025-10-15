@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giải hệ phương trình bậc nhất 2 ẩn</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; padding-top: 40px; }
+        .container { width: 500px; border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
+        h2 { text-align: center; }
+        .equation { text-align: center; font-size: 20px; margin: 20px 0; }
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .input-group label { font-weight: bold; }
+        .input-group input { width: 90%; padding: 8px; margin-top: 5px; }
+        button { display: block; width: 50%; margin: 20px auto 0; padding: 10px; font-size: 16px; cursor: pointer; }
+        #ketqua { margin-top: 20px; font-weight: bold; font-size: 18px; color: #0056b3; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Giải hệ phương trình bậc nhất 2 ẩn</h2>
+        <div class="equation">
+            <div>ax + by = c</div>
+            <div>a'x + b'y = c'</div>
+        </div>
+
+        <div class="input-grid">
+            <div class="input-group">
+                <label for="a">Nhập a:</label>
+                <input type="text" id="a" placeholder="Hệ số a">
+            </div>
+            <div class="input-group">
+                <label for="b">Nhập b:</label>
+                <input type="text" id="b" placeholder="Hệ số b">
+            </div>
+            <div class="input-group">
+                <label for="c">Nhập c:</label>
+                <input type="text" id="c" placeholder="Hệ số c">
+            </div>
+            <div class="input-group">
+                <label for="ap">Nhập a':</label>
+                <input type="text" id="ap" placeholder="Hệ số a'">
+            </div>
+            <div class="input-group">
+                <label for="bp">Nhập b':</label>
+                <input type="text" id="bp" placeholder="Hệ số b'">
+            </div>
+            <div class="input-group">
+                <label for="cp">Nhập c':</label>
+                <input type="text" id="cp" placeholder="Hệ số c'">
+            </div>
+        </div>
+
+        <button onclick="giaiHePhuongTrinh()">Giải hệ</button>
+
+        <div id="ketqua"></div>
+    </div>
+
+    <script>
+        function giaiHePhuongTrinh() {
+     
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+            const ap = parseFloat(document.getElementById('ap').value); 
+            const bp = parseFloat(document.getElementById('bp').value); 
+            const cp = parseFloat(document.getElementById('cp').value); 
+
+            const ketquaDiv = document.getElementById('ketqua');
+
+            if ([a, b, c, ap, bp, cp].some(isNaN)) {
+                ketquaDiv.innerHTML = "Vui lòng nhập đầy đủ các hệ số là số.";
+                return;
+            }
+
+            const D = a * bp - ap * b;
+            const Dx = c * bp - cp * b;
+            const Dy = a * cp - ap * c;
+
+            if (D !== 0) {
+                const x = Dx / D;
+                const y = Dy / D;
+                ketquaDiv.innerHTML = `Hệ có nghiệm duy nhất: <br>x = ${x.toFixed(2)} <br>y = ${y.toFixed(2)}`;
+            } else {
+                if (Dx !== 0 || Dy !== 0) {
+                    ketquaDiv.innerHTML = "Hệ phương trình vô nghiệm.";
+                } else {
+                    ketquaDiv.innerHTML = "Hệ phương trình có vô số nghiệm.";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

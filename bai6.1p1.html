@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương trình tra tuổi</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 50px;
+            background-color: #f4f4f4;
+        }
+
+        #container {
+            border: 2px solid pink;
+            background-color: #fff0f5;
+            padding: 20px;
+            border-radius: 8px;
+            width: 380px;
+        }
+
+        #container h3 {
+            text-align: center;
+            margin-top: 0;
+            background-color: pink;
+            padding: 8px;
+            border: 1px solid #e75480;
+            color: #333;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .form-row label {
+            font-weight: bold;
+            flex: 0 0 120px;
+            padding: 8px;
+            background-color: pink;
+            border: 1px solid #e75480;
+            text-align: center;
+        }
+
+        .form-row input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-row input[readonly] {
+            background-color: #e9e9e9;
+        }
+        
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .button-row button {
+            padding: 10px 30px;
+            font-size: 16px;
+            border: 1px solid #e75480;
+            background-color: pink;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h3>Chương trình tra tuổi</h3>
+        <div class="form-row">
+            <label for="duongLich">Tuổi dương lịch</label>
+            <input type="number" id="duongLich" placeholder="Nhập năm dương lịch">
+        </div>
+        <div class="form-row">
+            <label for="amLich">Tuổi âm lịch</label>
+            <input type="text" id="amLich" readonly>
+        </div>
+        <div class="button-row">
+            <button onclick="xoa()">Xóa</button>
+            <button onclick="traCuu()">Tra cứu</button>
+        </div>
+    </div>
+
+    <script>
+        function traCuu() {
+            const can = ["Canh", "Tân", "Nhâm", "Quý", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ"];
+            const chi = ["Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi"];
+
+            const yearInput = document.getElementById("duongLich");
+            const year = parseInt(yearInput.value);
+
+            if (isNaN(year) || year <= 0) {
+                alert("Vui lòng nhập một năm dương lịch hợp lệ!");
+                document.getElementById("amLich").value = "";
+                return;
+            }
+
+            const canIndex = year % 10;
+            const chiIndex = year % 12;
+
+            const tenCan = can[canIndex];
+            const tenChi = chi[chiIndex];
+
+            document.getElementById("amLich").value = `${tenCan} ${tenChi}`;
+        }
+
+        function xoa() {
+            document.getElementById("duongLich").value = "";
+            document.getElementById("amLich").value = "";
+        }
+    </script>
+
+</body>
+</html>

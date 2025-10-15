@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm soát Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; padding-top: 50px; }
+        .container { border: 1px solid #ccc; padding: 20px 40px; text-align: center; }
+        h3 { color: #333; }
+        p { margin-bottom: 20px; }
+        input[type="text"] { padding: 8px; width: 150px; }
+        input[type="submit"] { padding: 8px 15px; cursor: pointer; margin-left: 10px; }
+        #thongbao { margin-top: 15px; font-weight: bold; height: 20px; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>JavaScript có thể kiểm soát form</h3>
+        
+        <form onsubmit="return validateForm()">
+            <p>Hãy nhập số vào hộp text (từ 1 đến 10):</p>
+            <input type="text" id="numberInput">
+            <input type="submit" value="Submit">
+        </form>
+
+        <div id="thongbao"></div>
+    </div>
+
+    <script>
+        function validateForm() {
+            const inputElement = document.getElementById('numberInput');
+            const thongbaoDiv = document.getElementById('thongbao');
+            const inputValue = inputElement.value;
+
+            if (inputValue.trim() === "") {
+                thongbaoDiv.innerHTML = "Dữ liệu không được để trống.";
+                thongbaoDiv.className = "error";
+                return false; 
+            }
+
+            if (isNaN(inputValue)) {
+                thongbaoDiv.innerHTML = "Dữ liệu không đúng (phải là số).";
+                thongbaoDiv.className = "error";
+                return false;
+            }
+
+            const number = parseFloat(inputValue);
+            if (number < 1 || number > 10) {
+                thongbaoDiv.innerHTML = "Dữ liệu không đúng (số phải từ 1 đến 10).";
+                thongbaoDiv.className = "error";
+                return false; 
+            }
+
+          
+            thongbaoDiv.innerHTML = "Dữ liệu hợp lệ!";
+            thongbaoDiv.className = "success";
+            return false; 
+        }
+    </script>
+</body>
+</html>

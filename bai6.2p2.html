@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính phép trừ</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif; }
+        #calculator { border: 1px solid #999; border-radius: 5px; padding: 10px; background-color: #f0f0f0; }
+        #display { width: 98%; height: 40px; font-size: 24px; text-align: right; margin-bottom: 10px; padding-right: 5px; }
+        .calc-button { width: 50px; height: 50px; font-size: 20px; margin: 2px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div id="calculator">
+        <input type="text" id="display" readonly>
+        <table>
+            <tr>
+                <td><input type="button" class="calc-button" value="1" onclick="appendToDisplay('1')"></td>
+                <td><input type="button" class="calc-button" value="2" onclick="appendToDisplay('2')"></td>
+                <td><input type="button" class="calc-button" value="3" onclick="appendToDisplay('3')"></td>
+                <td><input type="button" class="calc-button" value="4" onclick="appendToDisplay('4')"></td>
+                <td><input type="button" class="calc-button" value="5" onclick="appendToDisplay('5')"></td>
+                <td><input type="button" class="calc-button" value="-" onclick="appendToDisplay('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="calc-button" value="6" onclick="appendToDisplay('6')"></td>
+                <td><input type="button" class="calc-button" value="7" onclick="appendToDisplay('7')"></td>
+                <td><input type="button" class="calc-button" value="8" onclick="appendToDisplay('8')"></td>
+                <td><input type="button" class="calc-button" value="9" onclick="appendToDisplay('9')"></td>
+                <td><input type="button" class="calc-button" value="0" onclick="appendToDisplay('0')"></td>
+                <td><input type="button" class="calc-button" value="=" onclick="calculateResult()"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+
+        function appendToDisplay(value) {
+            display.value += value;
+        }
+
+        function calculateResult() {
+            try {
+                const parts = display.value.split('-');
+
+                if (parts[0] === '' && parts.length > 2) {
+                    const num1 = -parseFloat(parts[1]);
+                    const num2 = parseFloat(parts[2]);
+                    if (isNaN(num1) || isNaN(num2)) throw new Error();
+                    display.value = num1 - num2;
+
+                } else if (parts.length === 2) { 
+
+                    const num1 = parseFloat(parts[0]);
+                    const num2 = parseFloat(parts[1]);
+                    if (isNaN(num1) || isNaN(num2)) throw new Error();
+                    display.value = num1 - num2;
+
+                } else {
+                    throw new Error();
+                }
+
+            } catch (error) {
+    
+                display.value = 'Lỗi';
+            }
+        }
+    </script>
+</body>
+</html>
