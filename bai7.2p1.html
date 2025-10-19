@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập 2 - Thay đổi màu nền</title>
+</head>
+<body onload="changeBackgroundColor()">
+
+    <h1>Chào mừng đến Website</h1>
+    
+    <script>
+        function changeBackgroundColor() {
+           
+            let color = prompt("Nhập màu nền của trang:", "");
+  
+            if (color != null && color != "") {
+              
+                document.body.style.backgroundColor = color;
+            }
+        }
+    </script>
+    
+</body>
+</html>

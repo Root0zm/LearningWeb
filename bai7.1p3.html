@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1 - Đổi màu nền</title>
+    <style>
+        .color-box {
+            width: 100px;
+            height: 100px;
+            display: inline-block; 
+            cursor: pointer; 
+            border: 1px solid white;
+        }
+
+        #red-box { background-color: red; }
+        #blue-box { background-color: blue; }
+        #green-box { background-color: green; }
+    </style>
+</head>
+<body>
+
+    <h2>Mouse over the squares and the background color will change!</h2>
+
+    <div class="color-box" id="red-box" onmouseover="changeBackground('red')"></div>
+    <div class="color-box" id="blue-box" onmouseover="changeBackground('blue')"></div>
+    <div class="color-box" id="green-box" onmouseover="changeBackground('green')"></div>
+
+    <script>
+        function changeBackground(color) {
+            document.body.style.backgroundColor = color;
+        }
+    </script>
+
+</body>
+</html>

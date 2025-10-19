@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập 4 - Máy tính đơn giản</title>
+</head>
+<body>
+
+    <h2>Bài tập 4: Máy tính đơn giản</h2>
+
+    <form name="calculatorForm">
+        Số thứ nhất: <input type="text" id="num1"><br><br>
+        Số thứ hai: <input type="text" id="num2"><br><br>
+
+        <input type="button" value="+" onclick="calculate('+')">
+        <input type="button" value="-" onclick="calculate('-')">
+        <input type="button" value="*" onclick="calculate('*')">
+        <input type="button" value="/" onclick="calculate('/')">
+        <br><br>
+
+        Kết quả: <input type="text" id="result" readonly>
+    </form>
+
+    <script>
+        function calculate(operator) {
+            let num1Str = document.getElementById('num1').value;
+            let num2Str = document.getElementById('num2').value;
+
+            if (num1Str === "" || num2Str === "") {
+                alert("Vui lòng nhập đủ cả hai số!");
+                return; 
+            }
+
+            let num1 = parseFloat(num1Str);
+            let num2 = parseFloat(num2Str);
+            let result = 0;
+
+            if (operator === '/' && num2 === 0) {
+                alert("Số thứ hai phải khác 0 cho phép chia!");
+                return; 
+            }
+
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+            }
+
+            document.getElementById('result').value = result;
+        }
+    </script>
+
+</body>
+</html>

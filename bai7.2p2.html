@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2 - Your Orders</title>
+</head>
+<body>
+
+    <h2>Your Orders</h2>
+
+    <form action="Process.php" method="post">
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="selectAllCheckbox"></th>
+                    <th>Order No</th>
+                    <th>Customer Name</th>
+                    <th>Order Date</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody id="orderTableBody">
+                <tr>
+                    <td><input type="checkbox" name="order_ids[]" value="SHD 11" class="order-checkbox"></td>
+                    <td>SHD 11</td>
+                    <td>Nguyen Van A</td>
+                    <td>12/2/2009</td>
+                    <td><input type="text" value="20000"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="order_ids[]" value="SHD 12" class="order-checkbox"></td>
+                    <td>SHD 12</td>
+                    <td>Nguyen Bich Thao</td>
+                    <td>12/11/2009</td>
+                    <td><input type="text" value="55000"></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5">Total:</td>
+                </tr>
+            </tfoot>
+        </table>
+        <br>
+        <input type="button" value="Update">
+        <input type="submit" value="Save">
+        <input type="button" value="Back" onclick="history.back()">
+        <input type="reset" value="Reset">
+    </form>
+
+    <script>
+
+        const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+        const orderCheckboxes = document.querySelectorAll('.order-checkbox');
+
+        selectAllCheckbox.addEventListener('click', function() {
+            orderCheckboxes.forEach(function(checkbox) {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+        });
+
+        orderCheckboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('click', function() {
+                const totalChecked = document.querySelectorAll('.order-checkbox:checked').length;
+                selectAllCheckbox.checked = (totalChecked === orderCheckboxes.length);
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2 - Máy tính</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f0f0;}
+        #calculator { width: 300px; border: 2px solid #333; border-radius: 10px; padding: 15px; background-color: #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        #display { width: 96%; height: 50px; font-size: 24px; text-align: right; margin-bottom: 10px; padding: 0 5px; border-radius: 5px; }
+        .keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .keys input[type="button"] { height: 50px; font-size: 18px; border-radius: 5px; border: none; cursor: pointer; }
+        .keys input[type="button"]:hover { background-color: #ddd; }
+        .operator { background-color: #f0ad4e; color: white; }
+        .equals { background-color: #5cb85c; color: white; grid-column: span 2; }
+    </style>
+</head>
+<body>
+
+    <div id="calculator">
+        <input type="text" id="display" readonly>
+
+        <div class="keys">
+            <input type="button" value="7" onclick="appendToDisplay('7')">
+            <input type="button" value="8" onclick="appendToDisplay('8')">
+            <input type="button" value="9" onclick="appendToDisplay('9')">
+            <input type="button" value="/" class="operator" onclick="appendToDisplay('/')">
+
+            <input type="button" value="4" onclick="appendToDisplay('4')">
+            <input type="button" value="5" onclick="appendToDisplay('5')">
+            <input type="button" value="6" onclick="appendToDisplay('6')">
+            <input type="button" value="*" class="operator" onclick="appendToDisplay('*')">
+
+            <input type="button" value="1" onclick="appendToDisplay('1')">
+            <input type="button" value="2" onclick="appendToDisplay('2')">
+            <input type="button" value="3" onclick="appendToDisplay('3')">
+            <input type="button" value="-" class="operator" onclick="appendToDisplay('-')">
+            
+            <input type="button" value="C" onclick="clearDisplay()">
+            <input type="button" value="0" onclick="appendToDisplay('0')">
+            <input type="button" value="." onclick="appendToDisplay('.')">
+            <input type="button" value="+" class="operator" onclick="appendToDisplay('+')">
+
+            <input type="button" value="=" class="equals" onclick="calculateResult()">
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+        function appendToDisplay(character) {
+            display.value += character;
+        }
+        function clearDisplay() {
+            display.value = '';
+        }
+        function calculateResult() {
+            try {
+
+                const result = eval(display.value);
+                display.value = result;
+            } catch (error) {
+
+                display.value = 'Error';
+            }
+        }
+    </script>
+
+</body>
+</html>

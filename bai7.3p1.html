@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập 3 - Bật tắt đèn</title>
+</head>
+<body>
+
+    <h2>Bài tập 3: Click vào bóng đèn để bật/tắt</h2>
+
+    <img id="lightBulb" 
+         src="https://www.w3schools.com/js/pic_bulboff.gif" 
+         onclick="toggleLight()" 
+         alt="Bóng đèn tắt">
+
+    <script>
+        let isLightOn = false; 
+
+        function toggleLight() {
+            let image = document.getElementById('lightBulb');
+
+            if (isLightOn) {
+                image.src = 'https://www.w3schools.com/js/pic_bulboff.gif';
+                isLightOn = false;
+            } else {
+                image.src = 'https://www.w3schools.com/js/pic_bulbon.gif';
+                isLightOn = true;
+            }
+        }
+    </script>
+
+</body>
+</html>

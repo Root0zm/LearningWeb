@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập 1 - onfocus và onchange</title>
+</head>
+<body>
+
+    <h2>Bài tập 1</h2>
+   
+
+    <input type="text" id="myTextField" 
+           onfocus="showAlert('focus')" 
+           onchange="showAlert('change')">
+
+    <script>
+        function showAlert(eventType) {
+            alert(eventType);
+        }
+    </script>
+
+</body>
+</html>

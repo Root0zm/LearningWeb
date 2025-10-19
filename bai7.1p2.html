@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1 - Thêm và Xóa Phần tử</title>
+</head>
+<body>
+
+    <h2>Dynamic Form</h2>
+    
+    <div id="emailContainer">
+        <div>
+            Enter Your Mail Address
+            <input type="text" name="email[]">
+            <input type="button" value="Add More" onclick="addMore()">
+        </div>
+    </div>
+
+    <script>
+        function addMore() {   
+            const container = document.getElementById('emailContainer');
+            const newRow = document.createElement('div');
+            newRow.innerHTML = `
+                Enter Your Mail Address
+                <input type="text" name="email[]">
+                <input type="button" value="Remove" onclick="removeRow(this)">
+            `;
+
+            container.appendChild(newRow);
+        }
+        function removeRow(button) {
+            button.parentElement.remove();
+        }
+    </script>
+
+</body>
+</html>
