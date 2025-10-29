@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả Phiếu 3</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 20px; 
+            line-height: 1.6;
+        }
+        h1 { color: #333; }
+        h2 { 
+            color: #b3003b; /* Màu đỏ đô */
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+        .ket-qua {
+            background-color: #f4f7f6;
+            border: 1px solid #d1d1d1;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1.1em;
+            color: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Kết quả bài tập Phiếu 3</h1>
+
+    <h2>Bài 1: Tính tổng hai mảng</h2>
+    <p>Mảng 1: [1, 0, 2, 3, 4]</p>
+    <p>Mảng 2: [3, 5, 6, 7, 8, 13]</p>
+    <div class="ket-qua" id="output-bai1"></div>
+
+    <h2>Bài 2: Kiểm tra chuỗi (Anagram)</h2>
+    <p>Cặp 1: "abcd" và "cbad"</p>
+    <p>Cặp 2: "abc" và "axy"</p>
+    <div class="ket-qua" id="output-bai2"></div>
+
+    
+    <script>
+        var array1 = [1, 0, 2, 3, 4];
+        var array2 = [3, 5, 6, 7, 8, 13];
+        var a3 = [];
+        var n = array1.length;
+        var m = array2.length;
+        
+        var minLength = Math.min(n, m);
+        
+        for (var i = 0; i < minLength; i++) {
+            a3[i] = array1[i] + array2[i];
+        }
+        
+        if (n > m) {
+            for (var i = m; i < n; i++) {
+                a3[i] = array1[i];
+            }
+        } else if (m > n) {
+            for (var i = n; i < m; i++) {
+                a3[i] = array2[i];
+            }
+        }
+        
+        document.getElementById('output-bai1').textContent = "[" + a3.join(', ') + "]";
+
+        
+        function kiemTraAnagram(st1, st2) {
+            if (st1.length !== st2.length) {
+                return false;
+            }
+            
+            var temp1 = st1.split('').sort().join('');
+            var temp2 = st2.split('').sort().join('');
+            
+            return temp1 === temp2;
+        }
+        
+        var st1_a = "abcd";
+        var st1_b = "cbad";
+        var ket_qua_1 = kiemTraAnagram(st1_a, st1_b);
+        
+        var st2_a = "abc";
+        var st2_b = "axy";
+        var ket_qua_2 = kiemTraAnagram(st2_a, st2_b);
+        
+        document.getElementById('output-bai2').innerHTML = 
+            '"' + st1_a + '" và "' + st1_b + '": ' + ket_qua_1 + "<br>" +
+            '"' + st2_a + '" và "' + st2_b + '": ' + ket_qua_2;
+    </script>
+
+</body>
+</html>

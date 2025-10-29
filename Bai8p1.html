@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả Phiếu 1</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 20px; 
+            line-height: 1.6;
+        }
+        h1 { color: #333; }
+        h2 { 
+            color: #005a9c;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+        /* Đây là khung chứa kết quả */
+        .ket-qua {
+            background-color: #f4f7f6;
+            border: 1px solid #d1d1d1;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Kết quả bài tập Phiếu 1</h1>
+
+    <h2>Bài 1: Sắp xếp mảng</h2>
+    <p>Mảng đầu vào: [ 3, 8, 7, 6, 5, -4, -3, 2, 1 ]</p>
+    <div class="ket-qua" id="output-bai1"></div>
+
+    <h2>Bài 2: Giá trị xuất hiện nhiều nhất</h2>
+    <p>Mảng đầu vào: [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]</p>
+    <div class="ket-qua" id="output-bai2"></div>
+
+    <h2>Bài 3: Các phần tử trùng lặp</h2>
+    <p>Mảng đầu vào: [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]</p>
+    <div class="ket-qua" id="output-bai3"></div>
+
+    <h2>Bài 4: Đảo ngược chuỗi</h2>
+    <p>Chuỗi đầu vào: "hello world"</p>
+    <div class="ket-qua" id="output-bai4"></div>
+
+    <h2>Bài 5: Viết hoa chữ cái đầu</h2>
+    <p>Chuỗi đầu vào: "hello world"</p>
+    <div class="ket-qua" id="output-bai5"></div>
+
+    <h2>Bài 6: Kiểm tra chuỗi bắt đầu bằng "Java"</h2>
+    <p>Chuỗi 1: "Java thật vi diệu"</p>
+    <p>Chuỗi 2: "học Java thật vi diệu"</p>
+    <div class="ket-qua" id="output-bai6"></div>
+
+
+    <script>
+  
+        var arr1_1 = [ 3, 8, 7, 6, 5, -4, -3, 2, 1 ];
+        arr1_1.sort(function(a, b) { return a - b; });
+        document.getElementById('output-bai1').textContent = arr1_1.join(',');
+
+        var arr1_2 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+        var counts_2 = {};
+        for (var i = 0; i < arr1_2.length; i++) {
+            var item = arr1_2[i];
+            counts_2[item] = counts_2[item] ? counts_2[item] + 1 : 1;
+        }
+        var maxCount_2 = 0;
+        var mostFrequentItem_2 = null;
+        for (var item in counts_2) {
+            if (counts_2[item] > maxCount_2) {
+                maxCount_2 = counts_2[item];
+                mostFrequentItem_2 = item;
+            }
+        }
+        document.getElementById('output-bai2').textContent = mostFrequentItem_2 + ' ( ' + maxCount_2 + ' times )';
+
+        var arr1_3 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+        var counts_3 = {};
+        for (var i = 0; i < arr1_3.length; i++) {
+            var item = arr1_3[i];
+            counts_3[item] = counts_3[item] ? counts_3[item] + 1 : 1;
+        }
+        var result_3 = "";
+        for (var item in counts_3) {
+            if (counts_3[item] > 1) {
+                result_3 += item + ' ( ' + counts_3[item] + ' times ) ';
+            }
+        }
+        document.getElementById('output-bai3').textContent = result_3.trim();
+
+ 
+        var st_4 = "hello world";
+        var reversedSt_4 = st_4.split('').reverse().join('');
+        document.getElementById('output-bai4').textContent = reversedSt_4;
+
+   
+
+     
+        var st_5 = "hello world";
+        var words_5 = st_5.split(' ');
+        var resultWords_5 = [];
+        for (var i = 0; i < words_5.length; i++) {
+            var word = words_5[i];
+            var firstLetter = word.charAt(0).toUpperCase();
+            var restOfWord = word.slice(1);
+            resultWords_5.push(firstLetter + restOfWord);
+        }
+        document.getElementById('output-bai5').textContent = resultWords_5.join(' ');
+
+   
+
+      
+        function checkStart(st) {
+            if (st.indexOf('Java') === 0) {
+                return "Chuỗi bắt đầu bằng Java";
+            } else {
+                return "Chuỗi không bắt đầu bằng Java";
+            }
+        }
+        var st1_6 = "Java thật vi diệu";
+        var st2_6 = "học Java thật vi diệu";
+        
+
+        document.getElementById('output-bai6').innerHTML = 
+            checkStart(st1_6) + "<br>" + 
+            checkStart(st2_6);
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+header .giamgia{
+    color:white;
+    background-color: orange;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    text-align: center;
+    margin: 0px;
+}
+header .box{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header .logo img{
+    width:150px;
+    height: 70px;
+    object-fit: contain;
+    margin-left:0px ;
+}
+header .menu{
+    display: flex;
+    gap: 60px;
+    list-style-type: none;
+}
+header ul>li>a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 30px 30px 30px 30px;
+    margin-top: 5px;
+}
+header ul>li>a:hover{
+    color: white;
+    background-color: #0e4b8a;
+}
+header button{
+    width: 35px;
+    height: 35px;
+    border: none;
+}
+nav{
+    background-image: url(menu.jpg);
+}
+nav h2{
+    color:  orange;
+    font-size: 35px;
+}
+nav .deal{
+    color: white;
+    background-color: brown;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 10px;
+}
+nav .sale{
+    color:brown;
+    font-size: 20px;
+
+}
+nav h3{
+    color:white;
+    background-color: orange;
+    font-size: 25px;
+    margin-left: 20px;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 10px;
+}
+section h2{
+    text-align: center;
+}
+section .catagory{
+    display: flex;
+    justify-content: space-around;
+}
+section .catagory img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 180px;
+}
+section .catagory img:hover{
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+section .hot{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+section .hot img{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+section .hot img:hover{
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+footer{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+    background-color: #0e4b8a;
+    color: white;
+    padding: 20px;
+    
+}

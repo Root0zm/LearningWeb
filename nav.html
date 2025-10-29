@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Navigation</title>
+        <meta charset="UTF-8">
+        <style>
+            nav{
+                background-color: #f2f2f2;
+                padding: 10px;
+                display: inline-block;
+                
+            }
+            nav>ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                display: grid;
+                gap: 30px;
+            }
+            .cha{
+                position: relative;
+            }
+            .con{
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 100%;
+            }
+            .con >li>a{
+                background-color: #d9d9d9;
+                padding: 5px 10px;
+                display: block;
+                white-space: nowrap;
+            }
+            .cha:hover .con{
+                display: block;
+                
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul class="menu">
+               <li><a>OPTION 1</a></li>
+               <li class="cha"><a>OPTION 1</a>
+                <ul class="con">
+                    <li><a>OPTION 2</a></li>
+                    <li><a>OPTION 2</a></li>
+                    <li><a>OPTION 2</a></li>    
+                </ul>
+            </li>
+               <li><a>OPTION 1</a></li>
+               <li><a>OPTION 1</a></li>
+               <li><a>OPTION 1</a></li>
+            </ul>
+        </nav>
+</html>
